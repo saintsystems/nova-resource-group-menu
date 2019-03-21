@@ -1,0 +1,36 @@
+{
+    "name": "saintsystems/nova-resource-group-menu",
+    "description": "Resource group sub-menus for Laravel Nova.",
+    "keywords": [
+        "laravel",
+        "nova",
+        "resources"
+    ],
+    "authors": [
+        {
+            "name": "Saint Systems"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1.0",
+        "laravel/nova": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SaintSystems\\Nova\\ResourceGroupMenu\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SaintSystems\\Nova\\ResourceGroupMenu\\ToolServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
