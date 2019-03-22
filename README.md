@@ -7,6 +7,8 @@ Give large resource groups their own menu pages with sub-groups.
 
 ![screenshot](screenshot.png)
 
+![screenshot-2](screenshot-2.png)
+
 ## Installation
 
 You can install the package in to a Laravel app that uses [Nova](https://nova.laravel.com) via composer:
