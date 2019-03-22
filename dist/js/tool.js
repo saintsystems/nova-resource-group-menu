@@ -175,7 +175,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* Scoped Styles */\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* Scoped Styles */\r\n", ""]);
 
 // exports
 
@@ -667,31 +667,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {},
+
 
     data: function data() {
         return {};
     },
 
     computed: {
-        group: function group() {
+        groupSlug: function groupSlug() {
             return this.$route.params.group;
         },
-        resources: function resources() {
+        group: function group() {
             var _this = this;
 
+            return _.find(Nova.config.resources, function (r) {
+                return r.groupSlug === _this.groupSlug;
+            }).group;
+        },
+        resources: function resources() {
+            var _this2 = this;
+
             return _.filter(Nova.config.resources, function (r) {
-                return r.group === _this.group && r.subGroup;
+                return r.groupSlug === _this2.groupSlug && r.subGroup;
             });
         },
         sections: function sections() {
-            var _this2 = this;
+            var _this3 = this;
 
-            var sections = _.uniqBy(this.resources, 'subGroup');
+            var sections = _.uniqBy(this.resources, 'subGroupSlug');
 
             _.forEach(sections, function (s) {
                 s.name = s.subGroup;
-                s.resources = _.filter(_this2.resources, function (r) {
-                    return r.subGroup === s.name;
+                s.slug = s.subGroupSlug;
+                s.resources = _.filter(_this3.resources, function (r) {
+                    return r.subGroupSlug === s.slug;
                 });
             });
 

@@ -28,27 +28,37 @@
 <script>
 export default {
 
+    mounted() {
+    },
+
     data:() => ({
     }),
 
     computed: {
-        group() {
+        groupSlug() {
             return this.$route.params.group
+        },
+
+        group() {
+            return _.find(Nova.config.resources, (r) => {
+                return r.groupSlug === this.groupSlug
+            }).group;
         },
 
         resources() {
             return _.filter(Nova.config.resources, (r) => {
-                return r.group === this.group && r.subGroup
+                return r.groupSlug === this.groupSlug && r.subGroup
             })
         },
 
         sections() {
-            let sections =  _.uniqBy(this.resources, 'subGroup')
+            let sections =  _.uniqBy(this.resources, 'subGroupSlug')
 
             _.forEach(sections, (s) => {
                 s.name = s.subGroup
+                s.slug = s.subGroupSlug
                 s.resources = _.filter(this.resources, (r) => {
-                    return r.subGroup === s.name
+                    return r.subGroupSlug === s.slug
                 })
             })
 
