@@ -4,7 +4,7 @@
 
         <div class="flex flex-wrap -mx-3">
 
-            <div class="px-3 mb-6 w-1/4" v-for="section in sections">
+            <div class="px-3 mb-6" :class="width" v-for="section in sections" v-if="config.width">
                 <loading-card :loading="false" class="px-6 py-4">
                     <h3 class="flex mb-3 text-base text-80 font-bold">
                         {{ section.name }}
@@ -28,13 +28,32 @@
 <script>
 export default {
 
-    mounted() {
+    async created() {
+        await this.getToolConfig();
     },
 
     data:() => ({
+        toolConfig: { }
     }),
 
+    methods: {
+        getToolConfig() {
+            Nova.request().get('/nova-vendor/resource-group-menu')
+                .then(({ data }) => {
+                    this.toolConfig = data
+                })
+        }
+    },
+
     computed: {
+        width() {
+            return 'w-' + this.config.width
+        },
+
+        config() {
+            return this.toolConfig
+        },
+
         groupSlug() {
             return this.$route.params.group
         },

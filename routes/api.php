@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/endpoint', function (Request $request) {
-//     //
-// });
+Route::get('/', function (Request $request) {
+    $resourceGroupMenu = collect(Nova::availableTools(request()))->first(function($tool) {
+        return $tool instanceof SaintSystems\Nova\ResourceGroupMenu\ResourceGroupMenu;
+    });
+
+    return $resourceGroupMenu->jsonSerialize();
+});
