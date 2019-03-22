@@ -22,14 +22,24 @@ composer require saintsystems/nova-resource-group-menu
 To enable resource group menu pages add the `DisplaysInResourceGroupMenu` trait to your base Nova `Resource`.
 ```php
 // in your app/Nova/Resource.php class
-import SaintSystems\Nova\ResourceGroupMenu\DisplaysInResourceGroupMenu;
+use SaintSystems\Nova\ResourceGroupMenu\DisplaysInResourceGroupMenu;
 
-use DisplaysInResourceGroupMenu;
+abstract class Resource extends NovaResource
+{
+    use DisplaysInResourceGroupMenu;
+
+    //... Removed for brevity
+
+}
 
 ```
 Then, within your Nova Resources that you want to group and place on their own resource group menu page, ensure the following:
 
-1. Set `$displayInNavigation` to `false`
+1. Set `$displayInNavigation` to `false`:
+```php
+// in your Nova Resource classes
+public static $displayInNavigation = false;
+```
 
 2. Define a group for the resource:
 ```php
@@ -38,6 +48,7 @@ public static $group = 'Master Data';
 ```
 3. Define a sub-group for the resource:
 ```php
+// in your Nova Resource classes
 public static $subGroup = 'Vendors';
 ```
 
