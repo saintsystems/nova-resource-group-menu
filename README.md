@@ -91,7 +91,7 @@ Optionally, define custom icons to use for each Resource Menu Group
     }
 ```
 
-You can define customize the subGroup width too, by setting the tool width:
+You can customize the subGroup card column width too, by setting the tool width:
 
 ```php
     /**
