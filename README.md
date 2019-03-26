@@ -72,7 +72,7 @@ Finally, register the tool in your `NovaServiceProvider` like so:
 Optionally, define custom icons to use for each Resource Menu Group
 
 ```php
-/**
+    /**
      * Get the tools that should be listed in the Nova sidebar.
      *
      * @return array
@@ -94,7 +94,7 @@ Optionally, define custom icons to use for each Resource Menu Group
 You can define customize the subGroup width too, by setting the tool width:
 
 ```php
-/**
+    /**
      * Get the tools that should be listed in the Nova sidebar.
      *
      * @return array
