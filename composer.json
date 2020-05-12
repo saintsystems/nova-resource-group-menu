@@ -1,5 +1,6 @@
 {
     "name": "saintsystems/nova-resource-group-menu",
+    "version":"0.1.0",
     "description": "Resource group sub-menus for Laravel Nova.",
     "keywords": [
         "laravel",
