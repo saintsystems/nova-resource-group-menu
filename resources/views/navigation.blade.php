@@ -24,7 +24,7 @@
             </svg> --}}
             {!! $resourceGroupMenu->getGroupIcon(\Illuminate\Support\Str::slug($group)) !!}
             <span class="sidebar-label">
-                {{ $group }}
+                {{ __($group) }}
             </span>
 
     </router-link>
